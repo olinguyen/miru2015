@@ -1,2 +1,4 @@
 # miru2015
-Semantic Video Classication by Fusing Multimodal High-Level Features
+Semantic Video Classification by Fusing Multimodal High-Level Features.
+
+
