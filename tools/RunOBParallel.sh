@@ -9,7 +9,6 @@ NUMCORES=19
 run_objectbank() {
   CTR=0
   DIRFILE="hmdb51-dirlist.txt";
-#  INPUTBASEDIR="/home/syq/olivier/dataset/ucf50-frames-1fps/";
   INPUTBASEDIR="/home/syq/fudan/hmdb51/frame/";
   OUTPUTBASEDIR="ob_hmdb51_feats/";
   OBJECTBANK_BIN="/home/syq/research_final/bin/OBmain"

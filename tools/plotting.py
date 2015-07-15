@@ -20,14 +20,16 @@ def plot_precision_recall_curve(y_true, y_score, title, categories):
         y_true = lb.fit_transform(y_true)
 
     for i in range(0, n_classes):
-        precision[i],  recall[i], _ = precision_recall_curve(y_true[:, i], y_score[:, i])
-        average_precision[i] =  average_precision_score(y_true[:, i], y_score[:, i])
+        precision[i],  recall[i], _ = precision_recall_curve(y_true[:, i],
+                                                             y_score[:, i])
+        average_precision[i] =  average_precision_score(y_true[:, i],
+                                                        y_score[:, i])
 
     # Compute average ROC curve and ROC area
     precision["avg"], recall["avg"], _ = precision_recall_curve(y_true.ravel(),
-            y_score.ravel())
+                                                                y_score.ravel())
     average_precision["avg"] = average_precision_score(y_true, y_score,
-            average="macro")
+                                                       average="macro")
 
     # Plot Precision-Recall curve for each class
     plt.clf()
@@ -40,7 +42,7 @@ def plot_precision_recall_curve(y_true, y_score, title, categories):
                 label='{0} (area = {1:0.2f})'
                 ''.format(categories[i], average_precision[i]))
 
-        # Put a legend to the right of the current axis
+    # Put a legend to the right of the current axis
     ax.legend(loc='center left', bbox_to_anchor=(1.1, 0.5))
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
@@ -52,7 +54,6 @@ def plot_precision_recall_curve(y_true, y_score, title, categories):
 
 # Plot confusion matrix
 def plot_confusion_matrix(y_true, y_pred, categories, title="Confusion Matrix"):
-
     if y_true.ndim > 1:
         nclasses = y_pred.shape[1]
         cm = np.zeros((nclasses, nclasses), np.int8)
@@ -67,14 +68,6 @@ def plot_confusion_matrix(y_true, y_pred, categories, title="Confusion Matrix"):
 
     else:
         cm = confusion_matrix(y_true, y_pred)
-    '''
-    plt.matshow(cm)
-    plt.title('Confusion matrix')
-    plt.colorbar(norm=colors.func_globals)
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
-    plt.show()
-    '''
     norm_conf = []
     for i in cm:
         a = 0
@@ -98,8 +91,8 @@ def plot_confusion_matrix(y_true, y_pred, categories, title="Confusion Matrix"):
         for y in xrange(height):
             if(cm[x][y] != 0):
                 ax.annotate(str(cm[x][y]), xy=(y, x),
-                        horizontalalignment='center',
-                        verticalalignment='center')
+                            horizontalalignment='center',
+                            verticalalignment='center')
 
     cb = fig.colorbar(res)
 
