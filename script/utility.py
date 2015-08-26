@@ -1,5 +1,4 @@
 from sklearn.multiclass import OneVsRestClassifier
-from sklearn.metrics import confusion_matrix
 from sklearn.grid_search import GridSearchCV
 from sklearn.svm import LinearSVC
 from sklearn import preprocessing
